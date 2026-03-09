@@ -29,13 +29,13 @@ make clean                    # remove build artifacts
 
 ## Metrics
 
-| Metric                  | Definition                                                                                                                               |
-| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------- | --------------------------------------------------------------------------- |
-| Absolute error          | `                                                                                                                                        | wins_i - n_a × t_i/T                     | ` — deviation of a client's actual wins from its ticket-proportional share. |
-| Pairwise relative error | `max\_{i,j}                                                                                                                              | wins_i - (wins_i+wins_j) × t_i/(t_i+t_j) | ` — worst-case fairness violation across any pair of clients.               |
-| Throughput ratio        | `wins_i / n_active` — fraction of quanta awarded to client i while it is active.                                                         |
-| Jitter                  | Sample standard deviation of inter-allocation intervals, this measures how regularly a client receives service.                          |
-| Convergence windows     | Mean absolute error computed in successive fixed-width windows, this tracks how quickly each scheduler reaches steady-state proportions. |
+| Metric | Definition |
+| ------ | ---------- |
+| Absolute error | `abs(wins_i - n_a * t_i/T)` — deviation of a client's actual wins from its ticket-proportional share. |
+| Pairwise relative error | `max(i,j) abs(wins_i - (wins_i+wins_j) * t_i/(t_i+t_j))` — worst-case fairness violation across any pair of clients. |
+| Throughput ratio | `wins_i / n_active` — fraction of quanta awarded to client i while it is active. |
+| Jitter | Sample standard deviation of inter-allocation intervals which measures how regularly a client receives service. |
+| Convergence windows | Mean absolute error in successive fixed-width windows which tracks how quickly each scheduler reaches steady-state proportions. |
 
 ## Test Scenarios
 
